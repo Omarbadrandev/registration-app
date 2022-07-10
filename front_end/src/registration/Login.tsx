@@ -1,5 +1,7 @@
 import React, { useRef, useState, useEffect } from "react"
 import { ErrorMsgParagraph } from "../components/ErrMsg"
+import FormButton from "../components/FormButton"
+import FormFooter from "../components/FormFooter"
 import FormTitle from "../components/FormTitle"
 import Input from "../components/Input"
 import Label from "../components/Label"
@@ -44,6 +46,7 @@ export const Login = () => {
     }
   ]
 
+
   return (
     <section>
       <ErrorMsgParagraph {...{ errRef }} {...{ errMsg }} />
@@ -67,6 +70,12 @@ export const Login = () => {
             setInputValFocus={input.setInputValFocus}
           />
         ))}
+        <FormButton disabled={false} text={"Sign In"} />
+        <FormFooter
+          caption={"Need an Account?"}
+          linkText={"Sign Up"}
+          link={"#"}
+        />
       </form>
     </section>
   )

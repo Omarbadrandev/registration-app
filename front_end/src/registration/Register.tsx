@@ -3,7 +3,7 @@ import Input from "../components/Input"
 import Label from "../components/Label"
 import FormTitle from "../components/FormTitle"
 import Note from "../components/Note"
-import { handleUserSubmit } from "../hooks/useHandleUserRegistration"
+import { handleUserSubmit } from "../utils/handleUserRegistration"
 import { ErrorMsgParagraph } from "../components/ErrMsg"
 import FormButton from "../components/FormButton"
 import {
@@ -13,26 +13,7 @@ import {
   USER_NAME_INPUT_ID,
   USER_REGEX
 } from "../constants"
-
-// Regex statements
-// Image result for regex statements
-// A regular expression (shortened as regex or regexp; sometimes referred to as rational expression)
-// is a sequence of characters that specifies a search pattern in text.
-// Usually such patterns are used by string-searching algorithm
-//  for "find" or "find and replace" operations on strings, or for input validation.
-
-const AllReadyRegisteredComponent = () => {
-  return (
-    <p>
-      Already registered?
-      <br />
-      <span className="line">
-        {/*put router link here*/}
-        <a href="#">Sign In</a>
-      </span>
-    </p>
-  )
-}
+import FormFooter from "../components/FormFooter"
 
 const Register = () => {
   //this will alow us to set the focus on the user input when the components loads
@@ -229,7 +210,11 @@ const Register = () => {
               text={"Sign Up"}
             />
           </form>
-          <AllReadyRegisteredComponent />
+          <FormFooter
+            caption={"Already registered?"}
+            linkText={"Sign In"}
+            link={"#"}
+          />
         </section>
       )}
     </>

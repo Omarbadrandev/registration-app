@@ -3,6 +3,11 @@ import axios from "../api/axios"
 import { RequestsConfig } from "../api/config"
 import { PWD_REGEX, USER_REGEX } from "../constants"
 
+// axios docs:
+// https://axios-http.com/docs/post_example
+// https://axios-http.com/docs/intro
+// https://jasonwatmore.com/post/2021/06/25/axios-http-post-request-examples
+
 const REGISTER_URL = "/register"
 
 interface RegisterRequestProps {
@@ -40,7 +45,10 @@ export const handleUserSubmit = async (
       RequestsConfig
     )
 
-    console.log(response?.data)
+    const { data } = response
+    // console.log(response?.data)
+    // console.log(response.statusText)
+    console.log(data)
     console.log(JSON.stringify(response))
     setSuccess(true)
 
