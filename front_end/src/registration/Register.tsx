@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useRef, useState, useEffect } from "react"
 import Input from "../components/Input"
 import Label from "../components/Label"
@@ -134,7 +133,6 @@ const Register = () => {
           focus={userFocus}
           val={user}
           validVal={validName}
-          // id={USER_NAME_INPUT_ID}
           children={<UserNameNoteContent />}
           id={"uidnote"}
         />
@@ -151,7 +149,6 @@ const Register = () => {
         <Note
           focus={pwdFocus}
           validVal={validPwd}
-          // id={PASSWORD_INPUT_ID}
           val={pwd}
           children={<PwdNoteContent />}
           id={"pwdnote"}

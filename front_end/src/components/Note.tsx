@@ -9,6 +9,7 @@ interface NoteProps {
   id: string
   children: ReactNode
 }
+
 const Note = (props: NoteProps) => {
   const { focus, val, validVal, id, children } = props
   return (
