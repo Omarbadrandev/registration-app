@@ -4,7 +4,7 @@ this a CRUD Registration app using React and node js
 this project contains React JS Form Validation | Axios User Registration Form Submit | Accessible Registration Form
 Webserver, REST API was build using Nodejs
 
-this also conatains a full tutorial to practice for Node.js followed by  https://www.youtube.com/watch?v=f2EqECiTBL8&t=0s&ab_channel=DaveGray
+this also contains a full tutorial to practice for Node.js followed by  https://www.youtube.com/watch?v=f2EqECiTBL8&t=0s&ab_channel=DaveGray
 Online course 
 
 front end developed also while following 
