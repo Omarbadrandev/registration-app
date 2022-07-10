@@ -216,6 +216,7 @@ const Register = () => {
                     val={input.val}
                     labelText={input.labelText}
                     contentPropertyValue={input.inputId}
+                    variant={"registration"}
                   />
                 }
                 inputType={input.inputType}

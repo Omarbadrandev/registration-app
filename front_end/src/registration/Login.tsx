@@ -58,6 +58,7 @@ export const Login = () => {
                 val={input.val}
                 labelText={input.labelText}
                 contentPropertyValue={input.inputId}
+                variant={"login"}
               />
             }
             inputType={input.inputType}

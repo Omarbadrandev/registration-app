@@ -4,22 +4,27 @@ import React from "react"
 
 interface LabelProps {
   validVal?: boolean
-  val: string
+  val?: string
   labelText: string
   contentPropertyValue: string
+  variant: "registration" | "login"
 }
 
 const Label = (props: LabelProps) => {
-  const { validVal, val, labelText, contentPropertyValue } = props
+  const { validVal, val, labelText, contentPropertyValue, variant } = props
   return (
     <label htmlFor={contentPropertyValue}>
       {labelText}
-      <span className={validVal && val? "valid" : "hide"}>
-        <FontAwesomeIcon icon={faCheck} />
-      </span>
-      <span className={validVal || !val ? "hide" : "invalid"}>
-        <FontAwesomeIcon icon={faTimes} />
-      </span>
+      {variant === "registration" && (
+        <>
+          <span className={validVal && val ? "valid" : "hide"}>
+            <FontAwesomeIcon icon={faCheck} />
+          </span>
+          <span className={validVal || !val ? "hide" : "invalid"}>
+            <FontAwesomeIcon icon={faTimes} />
+          </span>
+        </>
+      )}
     </label>
   )
 }
