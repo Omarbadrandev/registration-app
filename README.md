@@ -7,6 +7,9 @@ Webserver, REST API was build using Nodejs
 this also conatains a full tutorial to practice for Node.js followed by  https://www.youtube.com/watch?v=f2EqECiTBL8&t=0s&ab_channel=DaveGray
 Online course 
 
+front end developed also while following 
+https://www.youtube.com/watch?v=X3qyxo_UTR4&list=PL0Zuz27SZ-6PRCpm9clX0WiBEMB70FWwd&index=2&ab_channel=DaveGray
+
 # Nodejs Tutorial topics 
 chapter 1: math and simple server / Start Here 
 chapter 2: Read and Write Files 
