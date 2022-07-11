@@ -7,7 +7,11 @@ interface FormButtonProps {
 
 const FormButton = (props: FormButtonProps) => {
   const { disabled, text } = props
-  return <button disabled={disabled}>{text}</button>
+  return (
+    <button disabled={disabled} type="submit">
+      {text}
+    </button>
+  )
 }
 
 export default FormButton

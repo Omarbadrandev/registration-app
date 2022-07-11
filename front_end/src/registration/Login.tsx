@@ -1,11 +1,27 @@
-import React, { useRef, useState, useEffect } from "react"
+import React, { useRef, useState, useEffect, useContext } from "react"
+import axios from "../api/axios"
+import { RequestsConfig } from "../api/config"
 import { ErrorMsgParagraph } from "../components/ErrMsg"
+import FormButton from "../components/FormButton"
+import FormFooter from "../components/FormFooter"
 import FormTitle from "../components/FormTitle"
 import Input from "../components/Input"
 import Label from "../components/Label"
-import { PASSWORD_INPUT_ID, USER_NAME_INPUT_ID } from "../constants"
+import {
+  PASSWORD_INPUT_ID,
+  PWD_REGEX,
+  USER_NAME_INPUT_ID,
+  USER_REGEX
+} from "../constants"
+import { AxiosError } from "axios"
+import SuccessSection from "../components/SuccessSection"
+import AuthContext from "../context/AuthProvider"
+import { LoginResponse } from "../types"
+
+const LOGIN_URL = "/auth"
 
 export const Login = () => {
+  const { setAuth } = useContext(AuthContext)
   const userRef = useRef<HTMLInputElement>(null)
   const errRef = useRef<HTMLParagraphElement>(null)
 
@@ -13,6 +29,7 @@ export const Login = () => {
   const [pwd, setPwd] = useState("")
   const [errMsg, setErrMsg] = useState("")
   const [success, setSuccess] = useState(false)
+  // TODO: use userFocus and pwdFocus
   const [userForcus, setUserFocus] = useState(false)
   const [pwdFocus, setPwdFocus] = useState(false)
 
@@ -44,30 +61,100 @@ export const Login = () => {
     }
   ]
 
+  const handleSubmit = async (e: any) => {
+    e.preventDefault()
+
+    const v1 = USER_REGEX.test(user)
+    const v2 = PWD_REGEX.test(pwd)
+    type Case = "noServer" | "badRequest" | "unauthorized"
+
+    if (!v1 || !v2) {
+      setErrMsg("Invalid Entry")
+    }
+
+    try {
+      const response = await axios.post<LoginResponse>(
+        LOGIN_URL,
+        JSON.stringify({ user, pwd }),
+        RequestsConfig
+      )
+      const { data } = response
+      const accessToken = data.accessToken
+      const roles = data.roles
+      setAuth({ user, pwd, roles, accessToken })
+      setUser("")
+      setPwd("")
+      setSuccess(true)
+    } catch (err) {
+      console.log(err)
+      const error = err as AxiosError
+      console.log(error.response)
+
+      const errorCases: Record<Case, boolean> = {
+        noServer: !error?.response,
+        badRequest: error.response?.status === 400,
+        unauthorized: error.response?.status === 401
+      }
+
+      switch (true) {
+        case errorCases.noServer:
+          setErrMsg("No Server Response")
+          break
+        case errorCases.badRequest:
+          setErrMsg("Missing Username or Password")
+          break
+        case errorCases.unauthorized:
+          setErrMsg("Unauthorized")
+          break
+        default:
+          setErrMsg("Login Failed")
+          break
+      }
+
+      errRef.current?.focus()
+    }
+  }
   return (
-    <section>
-      <ErrorMsgParagraph {...{ errRef }} {...{ errMsg }} />
-      <FormTitle title={"login"} />
-      <form>
-        {LoginInputs.map((input) => (
-          <Input
-            setInputVal={input.setInputVal}
-            inputRef={input.inputRef}
-            label={
-              <Label
-                val={input.val}
-                labelText={input.labelText}
-                contentPropertyValue={input.inputId}
+    <>
+      {success ? (
+        <SuccessSection
+          title={"You are logged in!"}
+          linkText={"Go To Home"}
+          link={"#"}
+        />
+      ) : (
+        <section>
+          <ErrorMsgParagraph {...{ errRef }} {...{ errMsg }} />
+          <FormTitle title={"login"} />
+          <form onSubmit={handleSubmit}>
+            {LoginInputs.map((input) => (
+              <Input
+                setInputVal={input.setInputVal}
+                inputRef={input.inputRef}
+                label={
+                  <Label
+                    val={input.val}
+                    labelText={input.labelText}
+                    contentPropertyValue={input.inputId}
+                    variant={"login"}
+                  />
+                }
+                inputType={input.inputType}
+                inputId={input.inputId}
+                key={input.inputId}
+                setInputValFocus={input.setInputValFocus}
               />
-            }
-            inputType={input.inputType}
-            inputId={input.inputId}
-            key={input.inputId}
-            setInputValFocus={input.setInputValFocus}
-          />
-        ))}
-      </form>
-    </section>
+            ))}
+            <FormButton disabled={false} text={"Sign In"} />
+            <FormFooter
+              caption={"Need an Account?"}
+              linkText={"Sign Up"}
+              link={"#"}
+            />
+          </form>
+        </section>
+      )}
+    </>
   )
 }
 
