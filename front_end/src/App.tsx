@@ -1,15 +1,9 @@
 import React from "react"
 import "./App.css"
-import Login from "./registration/Login"
-import Register from "./registration/Register"
+import AppRouter from "./AppRouter"
 
 function App() {
-  return (
-    <div className="App">
-      <Register />
-      <Login />
-    </div>
-  )
+  return <AppRouter />
 }
 
 export default App

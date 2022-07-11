@@ -14,6 +14,7 @@ import {
   USER_REGEX
 } from "../constants"
 import FormFooter from "../components/FormFooter"
+import SuccessSection from "../components/SuccessSection"
 
 const Register = () => {
   //this will alow us to set the focus on the user input when the components loads
@@ -160,21 +161,15 @@ const Register = () => {
     }
   ]
 
-  const SuccessSection = () => {
-    return (
-      <section>
-        <h1>Success!</h1>
-        <p>
-          <a href="#"> Sign In</a>
-        </p>
-      </section>
-    )
-  }
+  // <h1>Success!</h1>
+  // <p>
+  //   <a href="#"> Sign In</a>
+  // </p>
 
   return (
     <>
       {success ? (
-        <SuccessSection />
+        <SuccessSection title={"Success!"} linkText={"Sign In"} link={"#"} />
       ) : (
         <section>
           <ErrorMsgParagraph {...{ errRef }} {...{ errMsg }} />
