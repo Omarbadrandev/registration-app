@@ -1,22 +1,22 @@
 import React, { useRef, useState, useEffect, useContext } from "react"
-import axios from "../api/axios"
-import { RequestsConfig } from "../api/config"
-import { ErrorMsgParagraph } from "../components/ErrMsg"
-import FormButton from "../components/FormButton"
-import FormFooter from "../components/FormFooter"
-import FormTitle from "../components/FormTitle"
-import Input from "../components/Input"
-import Label from "../components/Label"
+import axios from "../../../api/axios"
+import { RequestsConfig } from "../../../api/config"
+import { ErrorMsgParagraph } from "../../ErrMsg"
+import FormButton from "../../FormButton"
+import FormFooter from "../../FormFooter"
+import Input from "../../Input"
+import Label from "../../Label"
 import {
   PASSWORD_INPUT_ID,
   PWD_REGEX,
   USER_NAME_INPUT_ID,
   USER_REGEX
-} from "../constants"
+} from "../../../constants"
 import { AxiosError } from "axios"
-import SuccessSection from "../components/SuccessSection"
-import AuthContext from "../context/AuthProvider"
-import { LoginResponse } from "../types"
+import SuccessSection from "../../SuccessSection"
+import AuthContext from "../../../context/AuthProvider"
+import { LoginResponse } from "../../../types"
+import Title from "../../Title"
 
 const LOGIN_URL = "/auth"
 
@@ -30,7 +30,7 @@ export const Login = () => {
   const [errMsg, setErrMsg] = useState("")
   const [success, setSuccess] = useState(false)
   // TODO: use userFocus and pwdFocus
-  const [userForcus, setUserFocus] = useState(false)
+  const [userFocus, setUserFocus] = useState(false)
   const [pwdFocus, setPwdFocus] = useState(false)
 
   useEffect(() => {
@@ -120,12 +120,12 @@ export const Login = () => {
         <SuccessSection
           title={"You are logged in!"}
           linkText={"Go To Home"}
-          link={"#"}
+          link={"/"}
         />
       ) : (
         <section>
           <ErrorMsgParagraph {...{ errRef }} {...{ errMsg }} />
-          <FormTitle title={"login"} />
+          <Title title={"login"} />
           <form onSubmit={handleSubmit}>
             {LoginInputs.map((input) => (
               <Input
@@ -149,7 +149,7 @@ export const Login = () => {
             <FormFooter
               caption={"Need an Account?"}
               linkText={"Sign Up"}
-              link={"#"}
+              link={"register"}
             />
           </form>
         </section>
