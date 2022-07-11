@@ -1,20 +1,20 @@
 import React, { useRef, useState, useEffect } from "react"
-import Input from "../components/Input"
-import Label from "../components/Label"
-import FormTitle from "../components/FormTitle"
-import Note from "../components/Note"
-import { handleUserSubmit } from "../utils/handleUserRegistration"
-import { ErrorMsgParagraph } from "../components/ErrMsg"
-import FormButton from "../components/FormButton"
+import Input from "../../Input"
+import Label from "../../Label"
+import Note from "../../Note"
+import { handleUserSubmit } from "../../../utils/handleUserRegistration"
+import { ErrorMsgParagraph } from "../../ErrMsg"
+import FormButton from "../../FormButton"
 import {
   MATCH_PASSWORD_INPUT_ID,
   PASSWORD_INPUT_ID,
   PWD_REGEX,
   USER_NAME_INPUT_ID,
   USER_REGEX
-} from "../constants"
-import FormFooter from "../components/FormFooter"
-import SuccessSection from "../components/SuccessSection"
+} from "../../../constants"
+import FormFooter from "../../FormFooter"
+import SuccessSection from "../../SuccessSection"
+import Title from "../../Title"
 
 const Register = () => {
   //this will alow us to set the focus on the user input when the components loads
@@ -161,19 +161,18 @@ const Register = () => {
     }
   ]
 
-  // <h1>Success!</h1>
-  // <p>
-  //   <a href="#"> Sign In</a>
-  // </p>
-
   return (
     <>
       {success ? (
-        <SuccessSection title={"Success!"} linkText={"Sign In"} link={"#"} />
+        <SuccessSection
+          title={"Success!"}
+          linkText={"Sign In"}
+          link={"login"}
+        />
       ) : (
         <section>
           <ErrorMsgParagraph {...{ errRef }} {...{ errMsg }} />
-          <FormTitle title={"Register"} />
+          <Title title={"Register"} />
           <form
             onSubmit={(e) =>
               handleUserSubmit(e, { user, pwd, setErrMsg, setSuccess })
@@ -208,7 +207,7 @@ const Register = () => {
           <FormFooter
             caption={"Already registered?"}
             linkText={"Sign In"}
-            link={"#"}
+            link={"login"}
           />
         </section>
       )}
