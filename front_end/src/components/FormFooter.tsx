@@ -9,11 +9,9 @@ interface FormFooterProps {
 export const FormFooter = (props: FormFooterProps) => {
   const { caption, linkText, link } = props
   return (
-    <p>
+    <p className="fromFooter">
       {caption}
-      <br />
       <span className="line">
-        {/*put router link here*/}
         <a href={link}>{linkText}</a>
       </span>
     </p>

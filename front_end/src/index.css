@@ -9,7 +9,7 @@
 html {
   font-family: "Nunito", sans-serif;
   font-size: 22px;
-  color: #fff;
+  color: #000;
 }
 
 body {
@@ -25,6 +25,11 @@ body {
   padding: 1rem 0.5rem;
 }
 
+section:hover {
+  box-shadow: 0 0 3px black;
+  margin-top: -10px;
+}
+
 section {
   width: 100%;
   max-width: 420px;
@@ -33,7 +38,10 @@ section {
   flex-direction: column;
   justify-content: flex-start;
   padding: 1rem;
-  background-color: rgba(9, 10, 9, 0.626);
+  border-radius: 4px;
+  background-color: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  transition: 0.5s;
 }
 
 form {
@@ -44,36 +52,35 @@ form {
   padding-bottom: 1rem;
 }
 
-a,
-a:visited {
-  color: #fff;
-}
-
 input[type="text"],
 input[type="password"],
 button,
 textarea {
   font-family: "Nunito", sans-serif;
-  font-size: 22px;
+  font-size: auto;
   padding: 0.25rem;
-  border: 2px solid #fff;
+  border: 1px solid rgb(52, 49, 49);
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
   color: color-primary;
   outline: none;
   background: none;
+  border-radius: 0.2rem;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+  height: 32px;
+  width: 100%;
 }
 
 input:hover {
-  border: 2px solid rgb(0, 149, 255);
+  border: 2px solid #0a66c2;
 }
 input:focus {
-  border: 2px solid rgb(0, 85, 255);
-}
-
-button[type="submit"]:hover {
-  border: 1px solid black;
+  border: 2px solid #0a66c2;
 }
 
 label,
@@ -81,15 +88,23 @@ button {
   margin-top: 1rem;
 }
 
-button {
+button[type="submit"] {
   padding: 0.5rem;
+  background-color: #0a66c2;
+  color: #fff;
+  border-radius: 0.5rem;
+  font-size: 22px;
+}
+
+label {
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .instructions {
   font-size: 0.75rem;
   border-radius: 0.5rem;
-  background: #000;
-  color: #fff;
+  background: inherit;
+  color: rgba(0, 0, 0, 0.6);
   padding: 0.25rem;
   position: relative;
   bottom: -5px;
@@ -133,4 +148,36 @@ button {
 input {
   display: flex;
   flex-direction: column;
+}
+
+a {
+  color: #0073b1;
+  text-decoration: none;
+}
+
+.fromFooter {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.show-button {
+  position: relative;
+  z-index: 2;
+  float: right;
+  margin-left: -25px;
+  margin-top: -30px;
+  border: none;
+  font-size: small;
+  color: linear-gradient(
+    -75deg,
+    rgba(0, 0, 0, 0.6) 30%,
+    #000 50%,
+    rgba(0, 0, 0, 0.6) 70%
+  );
+}
+
+.show-button:hover {
+  text-decoration: underline;
 }

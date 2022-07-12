@@ -1,12 +1,13 @@
-import React, { useContext } from "react"
+import React from "react"
 import LinkComponent from "../LinkComponent"
 import Title from "../Title"
 import { useNavigate } from "react-router-dom"
-import AuthContext from "../../context/AuthProvider"
+import useAuth from "../../hooks/useAuth"
+import { Auth } from "../../types"
 
 const Home = () => {
   const navigate = useNavigate()
-  const { setAuth } = useContext(AuthContext)
+  const { setAuth } = useAuth()
 
   const homeLinks = [
     { path: "/editor", text: "Go to the Editor page" },
@@ -16,7 +17,8 @@ const Home = () => {
   ]
 
   const logout = async () => {
-    setAuth({})
+    // setting an empty object and casting it to Auth type
+    setAuth({} as Auth)
     navigate("/linkpage")
   }
 

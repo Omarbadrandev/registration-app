@@ -1,22 +1,23 @@
 import React from "react"
 import { createContext, useState } from "react"
+import { Auth } from "../types"
 
 //https://dev.to/alexander7161/react-context-api-with-typescript-example-j7a
 type AuthContextState = {
-  auth: {}
-  setAuth: React.Dispatch<React.SetStateAction<{}>>
+  auth: Auth
+  setAuth: React.Dispatch<React.SetStateAction<Auth>>
 }
 
 const AuthContextDefaultValues: AuthContextState = {
-  auth: {},
+  auth: {} as Auth,
   setAuth: () => {}
 }
 
 const AuthContext = createContext<AuthContextState>(AuthContextDefaultValues)
 
 export const AuthProvider = ({ children }: any) => {
-  const [auth, setAuth] = useState({})
-
+  const [auth, setAuth] = useState<Auth>({} as Auth)
+  debugger
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>
       {children}
