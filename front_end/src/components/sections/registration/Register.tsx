@@ -29,7 +29,6 @@ const Register = () => {
 
   const [pwd, setPwd] = useState("")
   const [validPwd, setValidPwd] = useState(false)
-  console.log(validPwd)
   const [pwdFocus, setPwdFocus] = useState(false)
 
   const [matchPwd, setMatchPwd] = useState("")
@@ -52,15 +51,11 @@ const Register = () => {
     // Returns a Boolean value that indicates whether or
     // not a pattern exists in a searched string.
     const result = USER_REGEX.test(user)
-    console.log(result)
-    console.log(user)
     setValidName(result)
   }, [user])
 
   useEffect(() => {
     const result = PWD_REGEX.test(pwd)
-    console.log(result)
-    console.log(pwd)
     setValidPwd(result)
     // this is to check wether the password and the password match is matching
     const match = pwd === matchPwd

@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useState } from "react"
+import ShowPasswordButton from "./ShowPasswordButton"
 
 interface InputProps {
   validVal?: boolean
@@ -23,11 +24,13 @@ const Input = (props: InputProps) => {
     inputId
   } = props
 
+  const [type, setType] = useState(inputType)
+
   return (
     <div className="input">
       {label}
       <input
-        type={inputType}
+        type={type}
         id={inputId}
         ref={inputRef}
         autoComplete="off"
@@ -45,6 +48,9 @@ const Input = (props: InputProps) => {
         // onBlur is thats when you leave the input field we're setting the focus defaults
         onBlur={() => setInputValFocus(false)}
       />
+      {inputType === "password" && (
+        <ShowPasswordButton {...{ type }} {...{ setType }} />
+      )}
       {note}
     </div>
   )

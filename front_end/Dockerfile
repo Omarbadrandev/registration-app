@@ -1,0 +1,23 @@
+#https://mherman.org/blog/dockerizing-a-react-app/
+# pull official base image
+FROM node:14.18.1-alpine
+
+# set working directory
+WORKDIR /app
+
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
+# install app dependencies
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install --silent
+
+# add app
+COPY . ./
+
+EXPOSE 3005
+# start app
+CMD ["npm", "start"]
+
+

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useContext } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import axios from "../../../api/axios"
 import { RequestsConfig } from "../../../api/config"
 import { ErrorMsgParagraph } from "../../ErrMsg"
@@ -14,21 +14,32 @@ import {
 } from "../../../constants"
 import { AxiosError } from "axios"
 import SuccessSection from "../../SuccessSection"
-import AuthContext from "../../../context/AuthProvider"
-import { LoginResponse } from "../../../types"
+import { LocationState, LoginResponse } from "../../../types"
 import Title from "../../Title"
+import useAuth from "../../../hooks/useAuth"
+import { Link, useNavigate, useLocation } from "react-router-dom"
 
 const LOGIN_URL = "/auth"
 
 export const Login = () => {
-  const { setAuth } = useContext(AuthContext)
+  const { setAuth } = useAuth()
+
+  const navigate = useNavigate()
+  const location = useLocation()
+  const state = location.state as LocationState
+  const from = state?.from?.pathname || "/"
+  // console.log(state.from.pathname)
+
+  // console.log(location.state.from)
+  // console.log(Object.entries(state))
+
   const userRef = useRef<HTMLInputElement>(null)
   const errRef = useRef<HTMLParagraphElement>(null)
 
   const [user, setUser] = useState("")
   const [pwd, setPwd] = useState("")
   const [errMsg, setErrMsg] = useState("")
-  const [success, setSuccess] = useState(false)
+  // const [success, setSuccess] = useState(false)
   // TODO: use userFocus and pwdFocus
   const [userFocus, setUserFocus] = useState(false)
   const [pwdFocus, setPwdFocus] = useState(false)
@@ -81,14 +92,14 @@ export const Login = () => {
       const { data } = response
       const accessToken = data.accessToken
       const roles = data.roles
+      console.log(user, pwd, roles, accessToken)
       setAuth({ user, pwd, roles, accessToken })
       setUser("")
       setPwd("")
-      setSuccess(true)
+    
+      navigate(from, { replace: true })
     } catch (err) {
-      console.log(err)
       const error = err as AxiosError
-      console.log(error.response)
 
       const errorCases: Record<Case, boolean> = {
         noServer: !error?.response,
@@ -115,14 +126,6 @@ export const Login = () => {
     }
   }
   return (
-    <>
-      {success ? (
-        <SuccessSection
-          title={"You are logged in!"}
-          linkText={"Go To Home"}
-          link={"/"}
-        />
-      ) : (
         <section>
           <ErrorMsgParagraph {...{ errRef }} {...{ errMsg }} />
           <Title title={"login"} />
@@ -146,15 +149,13 @@ export const Login = () => {
               />
             ))}
             <FormButton disabled={false} text={"Sign In"} />
-            <FormFooter
-              caption={"Need an Account?"}
-              linkText={"Sign Up"}
-              link={"register"}
-            />
           </form>
+          <FormFooter
+            caption={"Need an Account?"}
+            linkText={"Sign Up"}
+            link={"register"}
+          />
         </section>
-      )}
-    </>
   )
 }
 
