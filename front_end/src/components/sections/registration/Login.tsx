@@ -13,7 +13,6 @@ import {
   USER_REGEX
 } from "../../../constants"
 import { AxiosError } from "axios"
-import SuccessSection from "../../SuccessSection"
 import { LocationState, LoginResponse } from "../../../types"
 import Title from "../../Title"
 import useAuth from "../../../hooks/useAuth"
@@ -96,7 +95,7 @@ export const Login = () => {
       setAuth({ user, pwd, roles, accessToken })
       setUser("")
       setPwd("")
-    
+
       navigate(from, { replace: true })
     } catch (err) {
       const error = err as AxiosError
@@ -126,36 +125,38 @@ export const Login = () => {
     }
   }
   return (
-        <section>
-          <ErrorMsgParagraph {...{ errRef }} {...{ errMsg }} />
-          <Title title={"login"} />
-          <form onSubmit={handleSubmit}>
-            {LoginInputs.map((input) => (
-              <Input
-                setInputVal={input.setInputVal}
-                inputRef={input.inputRef}
-                label={
-                  <Label
-                    val={input.val}
-                    labelText={input.labelText}
-                    contentPropertyValue={input.inputId}
-                    variant={"login"}
-                  />
-                }
-                inputType={input.inputType}
-                inputId={input.inputId}
-                key={input.inputId}
-                setInputValFocus={input.setInputValFocus}
-              />
-            ))}
-            <FormButton disabled={false} text={"Sign In"} />
-          </form>
-          <FormFooter
-            caption={"Need an Account?"}
-            linkText={"Sign Up"}
-            link={"register"}
-          />
-        </section>
+    <div className="form-container">
+      <section>
+        <ErrorMsgParagraph {...{ errRef }} {...{ errMsg }} />
+        <Title title={"login"} />
+        <form onSubmit={handleSubmit}>
+          {LoginInputs.map((input) => (
+            <Input
+              setInputVal={input.setInputVal}
+              inputRef={input.inputRef}
+              label={
+                <Label
+                  val={input.val}
+                  labelText={input.labelText}
+                  contentPropertyValue={input.inputId}
+                  variant={"login"}
+                />
+              }
+              inputType={input.inputType}
+              inputId={input.inputId}
+              key={input.inputId}
+              setInputValFocus={input.setInputValFocus}
+            />
+          ))}
+          <FormButton disabled={false} text={"Sign In"} />
+        </form>
+      </section>
+      <FormFooter
+        caption={"Need an Account?"}
+        linkText={"Sign Up"}
+        link={"register"}
+      />
+    </div>
   )
 }
 

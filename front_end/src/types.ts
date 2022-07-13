@@ -17,3 +17,10 @@ export interface LocationState {
     pathname: string
   }
 }
+//TODO: refactor type auth and user are the same
+export interface User {
+  username: string
+  pwd: string
+  roles: number[]
+  accessToken: string
+}

@@ -157,7 +157,7 @@ const Register = () => {
   ]
 
   return (
-    <>
+    <div className="form-container">
       {success ? (
         <SuccessSection
           title={"Success!"}
@@ -165,48 +165,50 @@ const Register = () => {
           link={"login"}
         />
       ) : (
-        <section>
-          <ErrorMsgParagraph {...{ errRef }} {...{ errMsg }} />
-          <Title title={"Register"} />
-          <form
-            onSubmit={(e) =>
-              handleUserSubmit(e, { user, pwd, setErrMsg, setSuccess })
-            }
-          >
-            {RegistrationInputs.map((input) => (
-              <Input
-                validVal={input.validVal}
-                setInputVal={input.setInputVal}
-                setInputValFocus={input.setInputValFocus}
-                inputRef={input.inputRef}
-                note={input.note}
-                label={
-                  <Label
-                    validVal={input.validVal}
-                    val={input.val}
-                    labelText={input.labelText}
-                    contentPropertyValue={input.inputId}
-                    variant={"registration"}
-                  />
-                }
-                inputType={input.inputType}
-                inputId={input.inputId}
-                key={input.inputId}
+        <>
+          <section>
+            <ErrorMsgParagraph {...{ errRef }} {...{ errMsg }} />
+            <Title title={"Register"} />
+            <form
+              onSubmit={(e) =>
+                handleUserSubmit(e, { user, pwd, setErrMsg, setSuccess })
+              }
+            >
+              {RegistrationInputs.map((input) => (
+                <Input
+                  validVal={input.validVal}
+                  setInputVal={input.setInputVal}
+                  setInputValFocus={input.setInputValFocus}
+                  inputRef={input.inputRef}
+                  note={input.note}
+                  label={
+                    <Label
+                      validVal={input.validVal}
+                      val={input.val}
+                      labelText={input.labelText}
+                      contentPropertyValue={input.inputId}
+                      variant={"registration"}
+                    />
+                  }
+                  inputType={input.inputType}
+                  inputId={input.inputId}
+                  key={input.inputId}
+                />
+              ))}
+              <FormButton
+                disabled={!validName || !validPwd || !validMatch ? true : false}
+                text={"Sign Up"}
               />
-            ))}
-            <FormButton
-              disabled={!validName || !validPwd || !validMatch ? true : false}
-              text={"Sign Up"}
-            />
-          </form>
+            </form>
+          </section>
           <FormFooter
             caption={"Already registered?"}
             linkText={"Sign In"}
             link={"login"}
           />
-        </section>
+        </>
       )}
-    </>
+    </div>
   )
 }
 

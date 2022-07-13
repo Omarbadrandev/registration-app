@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken")
-require("dotenv").config()
+
 
 // the verify JWT was developed through https://www.youtube.com/watch?v=f2EqECiTBL8&ab_channel=DaveGray
 const verifyJWT = (req, res, next) => {

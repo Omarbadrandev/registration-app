@@ -9,7 +9,7 @@ interface FormFooterProps {
 export const FormFooter = (props: FormFooterProps) => {
   const { caption, linkText, link } = props
   return (
-    <p className="fromFooter">
+    <p className="form-footer">
       {caption}
       <span className="line">
         <a href={link}>{linkText}</a>

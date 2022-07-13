@@ -38,7 +38,7 @@ const AppRouter = () => {
       path: "lounge",
       element: <Lounge />,
       routeType: "private",
-      allowedRoles: [ROLES.User, ROLES.Admin, ROLES.User]
+      allowedRoles: [ROLES.Admin, ROLES.Editor]
     }
   ]
 
@@ -54,7 +54,13 @@ const AppRouter = () => {
                 key={route.path}
               />
             ) : (
-              <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
+              <Route
+                element={
+                  <RequireAuth
+                    allowedRoles={route.allowedRoles ? route.allowedRoles : []}
+                  />
+                }
+              >
                 <Route
                   path={route.path}
                   element={route.element}
