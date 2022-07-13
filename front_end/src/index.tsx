@@ -4,17 +4,19 @@ import "./index.css"
 import reportWebVitals from "./reportWebVitals"
 import { AuthProvider } from "./context/AuthProvider"
 import { BrowserRouter } from "react-router-dom"
-import AppRouter from "./AppRouter"
+import CookieBanner from "./components/CookieBanner"
+import App from "./App"
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 root.render(
   <React.StrictMode>
+    <CookieBanner />
     {/* A <BrowserRouter> uses regular URL paths. These are generally the best-looking URLs, but they require your server to be configured correctly.
      Specifically, your web server needs to serve the same page at all URLs that are managed client-side by React Router.
       Create React App supports this out of the box in development, and comes with instructions on how to configure your production server as well. */}
     <BrowserRouter>
       <AuthProvider>
-        <AppRouter />
+        <App />
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>

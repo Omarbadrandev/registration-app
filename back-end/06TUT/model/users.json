@@ -72,12 +72,6 @@
     "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im9tYXJiYWRyYW4zMjEiLCJpYXQiOjE2NTc1MjgwMzcsImV4cCI6MTY1NzYxNDQzN30.CXDevvW_hgOCemlS0XA-2_QcSWUbCLwJSaF6YT50I48"
   },
   {
-    "username": "omarbadran123",
-    "roles": { "user": 2001 },
-    "password": "$2b$10$MHNFSti.4kwhw01dOHELmOTejMm1n8REwxXUgPRp7YXsdnoZCdm.C",
-    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im9tYXJiYWRyYW4xMjMiLCJpYXQiOjE2NTc1MzAxMTEsImV4cCI6MTY1NzYxNjUxMX0.-lgj6sLTg2jApTxcPkkObRF5ekF8AsP3LUzKl_oetTc"
-  },
-  {
     "username": "omarbadran1234",
     "roles": { "user": 2001 },
     "password": "$2b$10$zBSuWeDkFQUcqqyrksVyBeOTfIDXwC7gMMXwmK6mbLmaO4nkj3Que"
@@ -123,5 +117,38 @@
     "roles": { "user": 2001 },
     "password": "$2b$10$VFI6EjJBEZ4.iwBADMxBWuIpBA/QnXqOvzfPeabPAkjs0mLQhRQWO",
     "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik9tYXIiLCJpYXQiOjE2NTc2MzkxMTgsImV4cCI6MTY1NzcyNTUxOH0.TpK-MatMr4-GzmnpSV8frekrAnk0HoikT-2jbf6xpWA"
+  },
+  {
+    "username": "omarbadrantesttest",
+    "roles": { "user": 2001 },
+    "password": "$2b$10$u.lpZ9peT..8wMthGRtnHusR9Nlgl0T6fA6udY7zzL4wz/Ep7mMVG",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im9tYXJiYWRyYW50ZXN0dGVzdCIsImlhdCI6MTY1NzY1MTA4OCwiZXhwIjoxNjU3NzM3NDg4fQ.cKY6w8FSv0Pay0BgdwYLSbgr1y_o6R2-GrcZt-fiTQE"
+  },
+  {
+    "username": "omartest123",
+    "roles": { "user": 2001 },
+    "password": "$2b$10$YWXYHoEn5GhAIyXGq3zH4OaoV83ku4w3IWsQ848Co4Fn9XVPc.oCK"
+  },
+  {
+    "username": "omarbadranlala",
+    "roles": { "user": 2001 },
+    "password": "$2b$10$i3L/UAJotGhVv12JZTujp.P80wNsbBfsNZdmC6gUhoE1bn8Tc.amq"
+  },
+  {
+    "username": "omarbadranhooo",
+    "roles": { "user": 2001 },
+    "password": "$2b$10$9bAUHRb6v0BquhiVlPaZfOG2QLOu/ieJCmP3W.KPB0TQPshIp2O2m"
+  },
+  {
+    "username": "omarbadran12",
+    "roles": { "user": 2001 },
+    "password": "$2b$10$cmPHbOUlXQi8SAqvn1bcteyBdgX6WKmYaKEKL.7vByXqdYqh9cx4S",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im9tYXJiYWRyYW4xMiIsImlhdCI6MTY1NzY1ODQwNSwiZXhwIjoxNjU3NzQ0ODA1fQ.JQZNirTlKnzz7enffZZw31eEKRoEeQ-BnLma3TQ5TCI"
+  },
+  {
+    "username": "omarbadran123",
+    "roles": { "user": 2001 },
+    "password": "$2b$10$MHNFSti.4kwhw01dOHELmOTejMm1n8REwxXUgPRp7YXsdnoZCdm.C",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im9tYXJiYWRyYW4xMjMiLCJpYXQiOjE2NTc2NTg1NDEsImV4cCI6MTY1Nzc0NDk0MX0.AEpZrm_6VRxwR2wr61rqOGYWn71qdFBF8f9dSNUqgQg"
   }
 ]

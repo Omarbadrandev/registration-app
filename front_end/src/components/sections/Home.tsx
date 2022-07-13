@@ -29,7 +29,9 @@ const Home = () => {
         <LinkComponent to={link.path} text={link.text} />
       ))}
       <div className="flexGrow">
-        <button onClick={logout}>Sign Out</button>
+        <button onClick={logout} type="submit">
+          Sign Out
+        </button>
       </div>
     </section>
   )

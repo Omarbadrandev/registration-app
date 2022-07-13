@@ -146,3 +146,6 @@ Payload is the essential information in a data block that you send to or receive
 
 # BearerToken
 Bearer tokens enable requests to authenticate using an access key, such as a JSON Web Token (JWT). The token is a text string, included in the request header. In the request Authorization tab, select Bearer Token from the Type dropdown list. In the Token field, enter your API key value.
+
+# mongoose
+https://mongoosejs.com/docs/guide.html
