@@ -56,7 +56,7 @@ const handleLogin = async (req, res) => {
     // Saving refreshToken with current user
     foundUser.refreshToken = refreshToken
     const result = await foundUser.save()
-    console.log(result)
+    // console.log(result)
 
     // const otherUsers = usersDB.users.filter(
     //   (person) => person.username !== foundUser.username

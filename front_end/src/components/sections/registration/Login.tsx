@@ -99,7 +99,7 @@ export const Login = () => {
       navigate(from, { replace: true })
     } catch (err) {
       const error = err as AxiosError
-
+      
       const errorCases: Record<Case, boolean> = {
         noServer: !error?.response,
         badRequest: error.response?.status === 400,

@@ -19,3 +19,29 @@ for all the of the tutorial folders: cd './back-end'
 for the users API as well as the server used in the registration-app cd './back-end/06TUT'
 
 - npm run dev
+
+# TODO'S
+
+https://blog.risingstack.com/10-best-practices-for-writing-node-js-rest-apis/
+
+Best Practices in Nodejs
+
+1 – Use HTTP Methods & API Routes => Done
+
+2 - Use HTTP Status Codes Correctly => Done
+
+3 - Use HTTP headers to Send Metadata => Done 
+
+4- Pick the right framework for your Node.js REST API => Done "Express"
+
+5 - Black-Box Test your Node.js REST APIs => TODO
+
+6 -  Do JWT-Based, Stateless Authentication => needs revision
+
+7 - Use Conditional Requests => needs more understanding and revision
+
+8 - Embrace Rate Limiting => TODO
+
+9 - Create a Proper API Documentation => TODO
+
+10 - Don’t Miss The Future of APIs => needs learning
