@@ -1,22 +1,25 @@
-import { useState, useEffect } from "react"
-import { User } from "../../types"
+import { useState } from "react"
 import { v4 as uuidv4 } from "uuid"
-import axios from "../../api/axios"
+import { useGetUsers } from "../../hooks/useGetUsers"
+import { User } from "../../types"
 
 const Users = () => {
-  const [users, setUsers] = useState<User[]>()
-  useEffect(() => {
-    let isMounted = true
-    const controller = new AbortController()
+  //TODO: refactor query
+  const [queryResult, setQueryResult] = useState<{
+    users: User[] | undefined
+    error: string
+    loaded: boolean
+  }>({
+    users: undefined,
+    error: "",
+    loaded: false
+  })
 
-    const getUsers = async () => {
-      try {
-        const response = await axios.get("/users")
-      } catch (error) {
-        console.error(error)
-      }
-    }
-  }, [])
+  useGetUsers().then((result) => setQueryResult(result))
+
+  const { users, error, loaded } = queryResult
+
+  console.log(error, loaded)
 
   return (
     <article>
