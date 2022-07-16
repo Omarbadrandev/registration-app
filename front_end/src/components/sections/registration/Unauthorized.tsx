@@ -1,22 +1,22 @@
-import React from "react"
-import { useNavigate } from "react-router-dom"
-import Title from "../../Title"
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import Title from '../../Title';
 
 const Unauthorized = () => {
-  const navigate = useNavigate()
+    const navigate = useNavigate();
 
-  const goBack = () => navigate(-1)
+    const goBack = () => navigate(-1);
 
-  return (
-    <section>
-      <Title title={"Unauthorized"} />
-      <br />
-      <p>You do not have access to the requested page.</p>
-      <div className="flexGrow">
-        <button onClick={goBack}>Go Back</button>
-      </div>
-    </section>
-  )
-}
+    return (
+        <section>
+            <Title title={'Unauthorized'} />
+            <br />
+            <p>You do not have access to the requested page.</p>
+            <div className='flexGrow'>
+                <button onClick={goBack}>Go Back</button>
+            </div>
+        </section>
+    );
+};
 
-export default Unauthorized
+export default Unauthorized;
