@@ -20,7 +20,10 @@ interface RegisterRequestProps {
 type handleUserSubmitPropsType = RegisterRequestProps;
 
 // TODO: rename it as a hook and adapt the request in the registration onSubmit function
-export const handleUserSubmit = async (e: any, RegisterRequestProps: handleUserSubmitPropsType) => {
+export const handleUserSubmit = async (
+    e: React.FormEvent<HTMLFormElement>,
+    RegisterRequestProps: handleUserSubmitPropsType
+) => {
     const { user, pwd, setErrMsg, setSuccess } = RegisterRequestProps;
     e.preventDefault();
     //  if button is enabled with JS hack
@@ -39,10 +42,6 @@ export const handleUserSubmit = async (e: any, RegisterRequestProps: handleUserS
         const response = await axios.post(REGISTER_URL, JSON.stringify({ user, pwd }), RequestsConfig);
 
         const { data } = response;
-        // console.log(response?.data)
-        // console.log(response.statusText)
-        // console.log(data);
-        // console.log(JSON.stringify(response));
         setSuccess(true);
 
         // clear state and controlled inputs
@@ -51,9 +50,7 @@ export const handleUserSubmit = async (e: any, RegisterRequestProps: handleUserS
         // setPwd('');
         // setMatchPwd('');
     } catch (err) {
-        // console.log(err);
         const error = err as AxiosError;
-        // console.log(error.response);
         if (!error?.response) {
             setErrMsg('No Server Response');
         } else if (error.response?.status === 409) {
